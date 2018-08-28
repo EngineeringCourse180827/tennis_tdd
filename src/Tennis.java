@@ -20,22 +20,21 @@ public class Tennis {
     }
 
     public String getScore() {
-        if (firstPlayerScore > 3 || secondPlayerScore > 3) {
-            String advPlayer = firstPlayerScore > secondPlayerScore ? firstPlayerName : secondPlayerName;
-            if (Math.abs(firstPlayerScore - secondPlayerScore) == 1) {
-                return advPlayer + " Adv";
+        if (isDifferentScore()) {
+            if (isReadyForGamePoint()) {
+                if (isAdv()) {
+                    return advScore();
+                }
             }
+
+            return lookupScore();
         }
 
-        if (firstPlayerScore != secondPlayerScore) {
-            return scoreLookup.get(firstPlayerScore) + " " + scoreLookup.get(secondPlayerScore);
+        if (isDeuce()) {
+            return deuceScore();
         }
 
-        if (firstPlayerScore >= 3) {
-            return "Deuce";
-        }
-
-        return scoreLookup.get(firstPlayerScore) + " All";
+        return sameScore();
     }
 
     public void firstPlayerScore() {
@@ -44,5 +43,41 @@ public class Tennis {
 
     public void secondPlayerScore() {
         secondPlayerScore++;
+    }
+
+    private String advScore() {
+        return advPlayer() + " Adv";
+    }
+
+    private String deuceScore() {
+        return "Deuce";
+    }
+
+    private boolean isDeuce() {
+        return firstPlayerScore >= 3;
+    }
+
+    private String sameScore() {
+        return scoreLookup.get(firstPlayerScore) + " All";
+    }
+
+    private String lookupScore() {
+        return scoreLookup.get(firstPlayerScore) + " " + scoreLookup.get(secondPlayerScore);
+    }
+
+    private boolean isDifferentScore() {
+        return firstPlayerScore != secondPlayerScore;
+    }
+
+    private boolean isReadyForGamePoint() {
+        return firstPlayerScore > 3 || secondPlayerScore > 3;
+    }
+
+    private String advPlayer() {
+        return firstPlayerScore > secondPlayerScore ? firstPlayerName : secondPlayerName;
+    }
+
+    private boolean isAdv() {
+        return Math.abs(firstPlayerScore - secondPlayerScore) == 1;
     }
 }
