@@ -20,21 +20,9 @@ public class Tennis {
     }
 
     public String getScore() {
-        if (isDifferentScore()) {
-            if (isReadyForGamePoint()) {
-                if (isAdv()) {
-                    return advScore();
-                }
-            }
-
-            return lookupScore();
-        }
-
-        if (isDeuce()) {
-            return deuceScore();
-        }
-
-        return sameScore();
+        return isDifferentScore()
+                ? isReadyForGamePoint() ? gamePointScore() : lookupScore()
+                : isDeuce() ? deuceScore() : sameScore();
     }
 
     public void firstPlayerScore() {
@@ -43,6 +31,14 @@ public class Tennis {
 
     public void secondPlayerScore() {
         secondPlayerScore++;
+    }
+
+    private String gamePointScore() {
+        return isAdv() ? advScore() : winScore();
+    }
+
+    private String winScore() {
+        return advPlayer() + " Win";
     }
 
     private String advScore() {

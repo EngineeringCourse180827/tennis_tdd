@@ -85,6 +85,14 @@ public class TennisTest {
         scoreShouldBe("Tony Adv");
     }
 
+    @Test
+    public void first_player_win() {
+        givenDeuce();
+        givenFirstPlayerScoreTimes(2);
+
+        scoreShouldBe("Joey Win");
+    }
+
     private void givenDeuce() {
         givenFirstPlayerScoreTimes(3);
         givenSecondPlayerScoreTimes(3);
