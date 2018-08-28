@@ -4,10 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TennisTest {
 
+    Tennis tennis = new Tennis();
+
     @Test
     public void love_all() {
-        Tennis tennis = new Tennis();
-
-        assertEquals("Love All", tennis.getScore());
+        scoreShouldBe("Love All");
     }
+
+    private void scoreShouldBe(String expected) {
+        assertEquals(expected, tennis.getScore());
+    }
+
 }
