@@ -11,6 +11,13 @@ public class TennisTest {
         scoreShouldBe("Love All");
     }
 
+    @Test
+    public void fifteen_love() {
+        tennis.firstPlayerScore();
+
+        scoreShouldBe("Fifteen Love");
+    }
+
     private void scoreShouldBe(String expected) {
         assertEquals(expected, tennis.getScore());
     }
