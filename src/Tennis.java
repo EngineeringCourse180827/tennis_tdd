@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tennis {
+    private final String firstPlayerName;
     private int firstPlayerScore;
     private int secondPlayerScore;
 
@@ -12,7 +13,17 @@ public class Tennis {
         put(3, "Forty");
     }};
 
+    public Tennis(String firstPlayerName) {
+        this.firstPlayerName = firstPlayerName;
+    }
+
     public String getScore() {
+        if (firstPlayerScore > 3) {
+            if (firstPlayerScore - secondPlayerScore == 1) {
+                return firstPlayerName + " Adv";
+            }
+        }
+
         if (firstPlayerScore != secondPlayerScore) {
             return scoreLookup.get(firstPlayerScore) + " " + scoreLookup.get(secondPlayerScore);
         }

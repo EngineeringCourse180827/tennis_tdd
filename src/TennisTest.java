@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TennisTest {
 
-    Tennis tennis = new Tennis();
+    Tennis tennis = new Tennis("Joey");
 
     @Test
     public void love_all() {
@@ -64,10 +64,22 @@ public class TennisTest {
 
     @Test
     public void deuce() {
-        givenFirstPlayerScoreTimes(3);
-        givenSecondPlayerScoreTimes(3);
+        givenDeuce();
 
         scoreShouldBe("Deuce");
+    }
+
+    @Test
+    public void first_player_adv() {
+        givenDeuce();
+        givenFirstPlayerScoreTimes(1);
+
+        scoreShouldBe("Joey Adv");
+    }
+
+    private void givenDeuce() {
+        givenFirstPlayerScoreTimes(3);
+        givenSecondPlayerScoreTimes(3);
     }
 
     private void givenFirstPlayerScoreTimes(int times) {
