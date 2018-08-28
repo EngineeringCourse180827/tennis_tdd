@@ -41,15 +41,28 @@ public class TennisTest {
 
     @Test
     public void love_thirty() {
-        tennis.secondPlayerScore();
-        tennis.secondPlayerScore();
+        givenSecondPlayerScoreTimes(2);
 
         scoreShouldBe("Love Thirty");
+    }
+
+    @Test
+    public void fifteen_all() {
+        tennis.firstPlayerScore();
+        tennis.secondPlayerScore();
+
+        scoreShouldBe("Fifteen All");
     }
 
     private void givenFirstPlayerScoreTimes(int times) {
         for (int i = 0; i < times; i++) {
             tennis.firstPlayerScore();
+        }
+    }
+
+    private void givenSecondPlayerScoreTimes(int times) {
+        for (int i = 0; i < times; i++) {
+            tennis.secondPlayerScore();
         }
     }
 

@@ -17,6 +17,10 @@ public class Tennis {
             return scoreLookup.get(firstPlayerScore) + " " + scoreLookup.get(secondPlayerScore);
         }
 
+        if (firstPlayerScore == 1) {
+            return "Fifteen All";
+        }
+
         return "Love All";
     }
 
