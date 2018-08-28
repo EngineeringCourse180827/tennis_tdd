@@ -20,10 +20,15 @@ public class TennisTest {
 
     @Test
     public void thirty_love() {
-        tennis.firstPlayerScore();
-        tennis.firstPlayerScore();
+        givenFirstPlayerScoreTimes(2);
 
         scoreShouldBe("Thirty Love");
+    }
+
+    private void givenFirstPlayerScoreTimes(int times) {
+        for (int i = 0; i < times; i++) {
+            tennis.firstPlayerScore();
+        }
     }
 
     private void scoreShouldBe(String expected) {
