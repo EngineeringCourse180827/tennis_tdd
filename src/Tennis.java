@@ -3,6 +3,7 @@ import java.util.Map;
 
 public class Tennis {
     private final String firstPlayerName;
+    private final String secondPlayerName;
     private int firstPlayerScore;
     private int secondPlayerScore;
 
@@ -13,14 +14,16 @@ public class Tennis {
         put(3, "Forty");
     }};
 
-    public Tennis(String firstPlayerName) {
+    public Tennis(String firstPlayerName, String secondPlayerName) {
         this.firstPlayerName = firstPlayerName;
+        this.secondPlayerName = secondPlayerName;
     }
 
     public String getScore() {
-        if (firstPlayerScore > 3) {
-            if (firstPlayerScore - secondPlayerScore == 1) {
-                return firstPlayerName + " Adv";
+        if (firstPlayerScore > 3 || secondPlayerScore > 3) {
+            String advPlayer = firstPlayerScore > secondPlayerScore ? firstPlayerName : secondPlayerName;
+            if (Math.abs(firstPlayerScore - secondPlayerScore) == 1) {
+                return advPlayer + " Adv";
             }
         }
 
