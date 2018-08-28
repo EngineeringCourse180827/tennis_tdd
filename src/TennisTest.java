@@ -54,6 +54,14 @@ public class TennisTest {
         scoreShouldBe("Fifteen All");
     }
 
+    @Test
+    public void thirty_all() {
+        givenFirstPlayerScoreTimes(2);
+        givenSecondPlayerScoreTimes(2);
+
+        scoreShouldBe("Thirty All");
+    }
+
     private void givenFirstPlayerScoreTimes(int times) {
         for (int i = 0; i < times; i++) {
             tennis.firstPlayerScore();
